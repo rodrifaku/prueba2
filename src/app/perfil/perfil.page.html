@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content  class="ion-padding" [fullscreen]="true" >
+  <ion-header collapse="condense">
+    <ion-toolbar>
+
+      <ion-title style="display: flex; justify-content: center; align-items: center;">Bienvenido</ion-title>
+      <ion-buttons slot="start">
+       <ion-row>
+        <ion-back-button text="salir" [routerLink]="['/login']" defaultHref="/"> </ion-back-button>
+       </ion-row>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card *ngIf="usuarioActivo">
+    <img [src]="usuarioActivo.image">
+    <ion-card-header>
+      <ion-card-title>{{usuarioActivo.firstName | uppercase}} {{usuarioActivo.lastName | uppercase}}</ion-card-title>
+      <ion-card-subtitle>{{usuarioActivo.username | uppercase}}</ion-card-subtitle>
+
+      <ion-item>
+        <ion-badge slot="start">{{ usuarioActivo.gender }}</ion-badge>
+      </ion-item>
+
+
+
+    </ion-card-header>
+    <ion-card-header>
+      <ion-card-subtitle>{{usuarioActivo.email}}</ion-card-subtitle>
+      <ion-card-title>Contacto:</ion-card-title>
+
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-button expand="block" routerLink="/producto" (click)="proS.resetearProductos()">Ir a catálogo</ion-button>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
