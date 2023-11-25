@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { BehaviorSubject, delay} from 'rxjs';
 import { UsuarioLogin } from '../modelos/usuarioLogin';
 import { Router } from '@angular/router';
@@ -48,6 +48,12 @@ export class AuthService {//Observador cargando
       this.cargando.next(false);
     }
     );
+  }
+  public agregarTokenALaCabecera(): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    });
   }
 
 }
